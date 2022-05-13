@@ -6,7 +6,7 @@ fun main() {
 
     var trie = Node('/')
     words.forEach {
-        trie = trie.insert(it)
+        trie.insert(it)
     }
 
     do {
@@ -19,7 +19,7 @@ fun main() {
 }
 
 class Node(private val key: Char, var children: HashMap<Char, Node> = HashMap(), var completeWord: Boolean = false) {
-    fun insert(word: String): Node {
+    fun insert(word: String) {
         var currentNode = this
         for (i in word.indices) {
             if (!currentNode.children.contains(word[i])) {
@@ -28,7 +28,6 @@ class Node(private val key: Char, var children: HashMap<Char, Node> = HashMap(),
             currentNode = currentNode.children[word[i]]!!
         }
         currentNode.completeWord = true
-        return this
     }
 
     fun matchingWords(inputString: String): List<String> {
