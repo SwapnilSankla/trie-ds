@@ -4,7 +4,7 @@ fun main() {
         .readText()
         .split("\r\n")
 
-    var trie = Node('/')
+    val trie = Node('/')
     words.forEach {
         trie.insert(it)
     }
